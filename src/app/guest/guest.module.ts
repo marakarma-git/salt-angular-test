@@ -10,8 +10,46 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MaincontentComponent } from './home/maincontent/maincontent.component';
+import { RightcontentComponent } from './home/rightcontent/rightcontent.component';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    component: GuestComponent,
+    children:[
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'business',
+        component: BusinessComponent
+      },
+      {
+        path: 'suggestion',
+        component: SuggestionComponent
+      },
+      {
+        path: 'help',
+        component: HelpComponent
+      },
+      {
+        path: 'pricing',
+        component: PricingComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      }
+    ]
+  }
+];
 
 @NgModule({
   declarations: [
@@ -24,10 +62,13 @@ import { FooterComponent } from './partials/footer/footer.component';
     SuggestionComponent,
     PricingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MaincontentComponent,
+    RightcontentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class GuestModule { }
